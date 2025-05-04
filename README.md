@@ -29,8 +29,8 @@ from shapes.shapes import create_shape, list_shapes
 
 print(list_shapes())  # доступные для создания фигуры
 
-circle = create_shape("circle", radius=5)
-circle.area()
+circle = create_shape("circle", radius=5) # создать круг
+circle.area()                             # вычислить площадь
 
 triangle = create_shape("triangle", a=3, b=4, c=5)
 triangle.area()
@@ -40,10 +40,10 @@ triangle.area()
 
 ```python
 from shapes.shapes import create_shape
-from shapes.geometry.utils import is_right_angled
+from shapes.geometry.utils import is_right_angled   # импорт необходимой функции
 
 triangle = create_shape("triangle", a=3, b=4, c=5)
-is_right_angled(triangle)
+is_right_angled(triangle)                           
 ```
 
 ### Пользовательская фигура
@@ -66,7 +66,7 @@ class Rectangle(Shape):
     def _is_valid(self):
         return all(side > 0 for side in (self.a, self.b, self.c, self.d))
         
-    register_shape("rectangle", Rectangle)
+register_shape("rectangle", Rectangle)
 
 rect = Rectangle(4, 5, 6, 3)
 rect.area()
