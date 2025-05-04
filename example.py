@@ -1,7 +1,8 @@
-from shapes.shapes import create_shape
+from shapes.shapes import create_shape, list_shapes
 from shapes.geometry.utils import is_right_angled
 
 # использование
+print(list_shapes()) # доступные для создания фигуры
 
 circle = create_shape("circle", radius=5)
 print("Площадь круга:", circle.area())
@@ -22,8 +23,11 @@ class Rectangle(Shape):
         self.c = c
         self.d = d 
         
-    def area(self):
+    def _compute_area(self):
         return self.a * self.b 
+    
+    def _is_valid(self):
+        return all(side > 0 for side in (self.a, self.b, self.c, self.d))
     
 register_shape("rectangle", Rectangle)
 
